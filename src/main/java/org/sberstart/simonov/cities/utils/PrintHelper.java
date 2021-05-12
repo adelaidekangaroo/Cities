@@ -7,7 +7,8 @@ import java.util.Map;
 
 public class PrintHelper {
 
-    private PrintHelper() {}
+    private PrintHelper() {
+    }
 
     public static void print(List<City> cities) {
         cities.forEach(System.out::println);
@@ -24,5 +25,4 @@ public class PrintHelper {
     public static void printError(Throwable e) {
         System.err.println(e);
     }
-
 }

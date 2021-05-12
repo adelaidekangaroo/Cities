@@ -58,7 +58,7 @@ public class Main {
                     AbstractMap.SimpleEntry<Integer, Integer> maxPopulatedCity = service.getCityIndexWithMaxPopulation(cities);
                     int index = maxPopulatedCity.getKey();
                     int value = maxPopulatedCity.getValue();
-                    print(String.format("[%d] - %d%n", index, value));
+                    print(String.format("[%d] = %d%n", index, value));
                     break;
                 }
                 case 4: {
