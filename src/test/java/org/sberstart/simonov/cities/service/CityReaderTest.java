@@ -10,13 +10,13 @@ import java.util.List;
 
 import static org.sberstart.simonov.cities.TestData.*;
 
-public class CityWriterTest {
+public class CityReaderTest {
 
-    private final CityWriter writer = new CityWriter();
+    private final CityReader reader = new CityReader();
 
     @Test
-    public void writeFromFile() {
-        List<City> actual = writer.writeFromFile(TestData.SOURCE);
+    public void readFromFile() {
+        List<City> actual = reader.readFromFile(TestData.SOURCE);
         MatcherAssert.assertThat(actual, Matchers.contains(CITY_1, CITY_2, CITY_3));
     }
 }

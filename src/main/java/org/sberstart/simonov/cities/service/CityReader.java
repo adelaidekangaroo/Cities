@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 import static org.sberstart.simonov.cities.utils.PrintHelper.printError;
 
-public class CityWriter {
+public class CityReader {
 
-    public List<City> writeFromFile(File source) {
+    public List<City> readFromFile(File source) {
         List<City> cities = new ArrayList<>();
         Scanner scanner = null;
         try {

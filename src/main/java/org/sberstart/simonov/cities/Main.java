@@ -1,8 +1,8 @@
 package org.sberstart.simonov.cities;
 
 import org.sberstart.simonov.cities.model.City;
+import org.sberstart.simonov.cities.service.CityReader;
 import org.sberstart.simonov.cities.service.CityService;
-import org.sberstart.simonov.cities.service.CityWriter;
 import org.sberstart.simonov.cities.utils.PrintHelper;
 
 import java.io.File;
@@ -19,9 +19,9 @@ public class Main {
 
     public static void main(String[] args) {
         CityService service = new CityService();
-        CityWriter writer = new CityWriter();
+        CityReader reader = new CityReader();
 
-        List<City> cities = writer.writeFromFile(FILE);
+        List<City> cities = reader.readFromFile(FILE);
 
         print("Список городов: ");
         print(cities);
@@ -58,7 +58,7 @@ public class Main {
                     AbstractMap.SimpleEntry<Integer, Integer> maxPopulatedCity = service.getCityIndexWithMaxPopulation(cities);
                     int index = maxPopulatedCity.getKey();
                     int value = maxPopulatedCity.getValue();
-                    print(String.format("[%d] = %d%n", index, value));
+                    print(String.format("[%d] = %d", index, value));
                     break;
                 }
                 case 4: {
