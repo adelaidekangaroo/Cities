@@ -35,7 +35,7 @@ public class Main {
 
         int code = -1;
         Scanner scanner = new Scanner(System.in);
-        while (code != 0) {
+        do {
             try {
                 code = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
@@ -68,6 +68,6 @@ public class Main {
                 default:
                     print("Неизвестный код");
             }
-        }
+        } while (code != 0);
     }
 }
