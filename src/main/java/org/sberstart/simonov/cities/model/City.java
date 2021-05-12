@@ -1,11 +1,9 @@
 package org.sberstart.simonov.cities.model;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class City {
 
-    private final UUID id = UUID.randomUUID();
     private final String name;
     private final String region;
     private final String district;
@@ -18,10 +16,6 @@ public class City {
         this.district = district;
         this.population = population;
         this.foundation = foundation;
-    }
-
-    public UUID getId() {
-        return id;
     }
 
     public String getName() {
