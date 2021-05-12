@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Main {
 
-    private static final File file = new File("src/main/resources/Cities.txt");
+    private static final File FILE = new File("src/main/resources/Cities.txt");
 
     public static void main(String[] args) {
         CityService service = new CityService();
@@ -17,7 +17,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        List<City> cities = writer.writeFromFile(file);
+        List<City> cities = writer.writeFromFile(FILE);
         System.out.println("Список городов: ");
         printList(cities);
 
@@ -25,7 +25,8 @@ public class Main {
                 "1 - Отсортировать города по названию\n" +
                 "2 - Отсортировать города по округу и названию\n" +
                 "3 - Найти индекс города с наибольшим населением\n" +
-                "4 - Количество городов по регионам\n0 - Выйти");
+                "4 - Количество городов по регионам\n" +
+                "0 - Выйти");
 
         int code = -1;
         while (code != 0) {
