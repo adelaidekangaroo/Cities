@@ -15,13 +15,13 @@ import static org.sberstart.simonov.cities.utils.PrintHelper.printError;
 
 public class Main {
 
-    private static final File FILE = new File("src/main/resources/Cities.txt");
+    private static final File SOURCE = new File("src/main/resources/Cities.txt");
 
     public static void main(String[] args) {
         CityService service = new CityService();
         CityReader reader = new CityReader();
 
-        List<City> cities = reader.readFromFile(FILE);
+        List<City> cities = reader.readFromFile(SOURCE);
 
         print("Список городов: ");
         print(cities);
