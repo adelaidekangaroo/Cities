@@ -33,9 +33,9 @@ public class CityServiceTest {
     public void getCityIndexWithMaxPopulation() {
         AbstractMap.SimpleEntry<Integer, Integer> actual = service.getCityIndexWithMaxPopulation(CITIES);
         int index = actual.getKey();
-        int value = actual.getValue();
+        int population = actual.getValue();
         Assert.assertEquals(CITIES.toArray()[index], CITY_2);
-        Assert.assertEquals(value, CITY_2.getPopulation());
+        Assert.assertEquals(population, CITY_2.getPopulation());
     }
 
     @Test
