@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static org.sberstart.simonov.cities.utils.PrintHelper.printError;
+
 public class CityWriter {
 
     public List<City> writeFromFile(File source) {
@@ -20,7 +22,7 @@ public class CityWriter {
                 cities.add(ParseUtil.parseToCityObject(scanner.nextLine()));
             }
         } catch (FileNotFoundException e) {
-            System.err.println(e);
+            printError(e);
         } finally {
             scanner.close();
         }

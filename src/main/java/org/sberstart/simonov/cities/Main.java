@@ -3,9 +3,15 @@ package org.sberstart.simonov.cities;
 import org.sberstart.simonov.cities.model.City;
 import org.sberstart.simonov.cities.service.CityService;
 import org.sberstart.simonov.cities.service.CityWriter;
+import org.sberstart.simonov.cities.utils.PrintHelper;
 
 import java.io.File;
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.List;
+import java.util.Scanner;
+
+import static org.sberstart.simonov.cities.utils.PrintHelper.print;
+import static org.sberstart.simonov.cities.utils.PrintHelper.printError;
 
 public class Main {
 
@@ -15,13 +21,12 @@ public class Main {
         CityService service = new CityService();
         CityWriter writer = new CityWriter();
 
-        Scanner scanner = new Scanner(System.in);
-
         List<City> cities = writer.writeFromFile(FILE);
-        System.out.println("Список городов: ");
-        printList(cities);
 
-        System.out.println("Введите код нужной функции:\n" +
+        print("Список городов: ");
+        print(cities);
+
+        print("Введите код нужной функции:\n" +
                 "1 - Отсортировать города по названию\n" +
                 "2 - Отсортировать города по округу и названию\n" +
                 "3 - Найти индекс города с наибольшим населением\n" +
@@ -29,48 +34,40 @@ public class Main {
                 "0 - Выйти");
 
         int code = -1;
+        Scanner scanner = new Scanner(System.in);
         while (code != 0) {
             try {
                 code = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.err.println(e);
+                printError(e);
                 code = -1;
             }
             switch (code) {
                 case -1:
-                    System.out.println("Неверный формат кода");
+                    print("Неверный формат кода");
                     break;
                 case 0:
                     System.exit(0);
                 case 1:
-                    printList(service.sortByName(cities));
+                    print(service.sortByName(cities));
                     break;
                 case 2:
-                    printList(service.sortByDistrictAndName(cities));
+                    print(service.sortByDistrictAndName(cities));
                     break;
                 case 3: {
                     AbstractMap.SimpleEntry<Integer, Integer> maxPopulatedCity = service.getCityIndexWithMaxPopulation(cities);
                     int index = maxPopulatedCity.getKey();
                     int value = maxPopulatedCity.getValue();
-                    System.out.printf("[%d] - %d%n", index, value);
+                    print(String.format("[%d] - %d%n", index, value));
                     break;
                 }
                 case 4: {
-                    printMap(service.getNumberOfCitiesByRegions(cities));
+                    PrintHelper.print(service.getNumberOfCitiesByRegions(cities));
                     break;
                 }
                 default:
-                    System.out.println("Неизвестный код");
-
+                    print("Неизвестный код");
             }
         }
-    }
-
-    private static void printList(List<City> cities) {
-        cities.forEach(System.out::println);
-    }
-
-    private static void printMap(Map<String, Long> map) {
-        map.forEach((k, v) -> System.out.printf("%s - %d%n", k, v));
     }
 }
