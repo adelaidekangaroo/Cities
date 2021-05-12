@@ -65,6 +65,6 @@ public class Main {
                 default:
                     print("Неизвестный код");
             }
-        } while (code != 0);
+        } while (true);
     }
 }
