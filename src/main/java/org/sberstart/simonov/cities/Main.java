@@ -43,9 +43,6 @@ public class Main {
                 code = -1;
             }
             switch (code) {
-                case -1:
-                    print("Неверный формат кода");
-                    break;
                 case 0:
                     System.exit(0);
                 case 1:
