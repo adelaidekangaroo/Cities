@@ -4,11 +4,21 @@ import java.util.Objects;
 
 public class City {
 
+    private int id;
     private final String name;
     private final String region;
     private final String district;
     private final int population;
     private final short foundation;
+
+    public City(int id, String name, String region, String district, int population, short foundation) {
+        this.id = id;
+        this.name = name;
+        this.region = region;
+        this.district = district;
+        this.population = population;
+        this.foundation = foundation;
+    }
 
     public City(String name, String region, String district, int population, short foundation) {
         this.name = name;
@@ -16,6 +26,14 @@ public class City {
         this.district = district;
         this.population = population;
         this.foundation = foundation;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

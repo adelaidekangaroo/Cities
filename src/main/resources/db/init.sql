@@ -8,5 +8,5 @@ CREATE TABLE city
     district   VARCHAR(255) NOT NULL,
     population INT          NOT NULL,
     foundation SMALLINT     NOT NULL,
-    CONSTRAINT unique_cool_amount UNIQUE (name)
+    CONSTRAINT unique_city_name UNIQUE (name)
 );
