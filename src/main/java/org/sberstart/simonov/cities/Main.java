@@ -34,37 +34,38 @@ public class Main {
                 "0 - Выйти");
 
         int code = -1;
-        Scanner scanner = new Scanner(System.in);
-        do {
-            try {
-                code = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                printError(e);
-                code = -1;
-            }
-            switch (code) {
-                case 0:
-                    System.exit(0);
-                case 1:
-                    print(service.sortByName(cities));
-                    break;
-                case 2:
-                    print(service.sortByDistrictAndName(cities));
-                    break;
-                case 3: {
-                    AbstractMap.SimpleEntry<Integer, Integer> maxPopulatedCity = service.getCityIndexWithMaxPopulation(cities);
-                    int index = maxPopulatedCity.getKey();
-                    int value = maxPopulatedCity.getValue();
-                    print(String.format("[%d] = %d", index, value));
-                    break;
+        try (Scanner scanner = new Scanner(System.in)) {
+            do {
+                try {
+                    code = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException e) {
+                    printError(e);
+                    code = -1;
                 }
-                case 4: {
-                    PrintHelper.print(service.getNumberOfCitiesByRegions(cities));
-                    break;
+                switch (code) {
+                    case 0:
+                        System.exit(0);
+                    case 1:
+                        print(service.sortByName(cities));
+                        break;
+                    case 2:
+                        print(service.sortByDistrictAndName(cities));
+                        break;
+                    case 3: {
+                        AbstractMap.SimpleEntry<Integer, Integer> maxPopulatedCity = service.getCityIndexWithMaxPopulation(cities);
+                        int index = maxPopulatedCity.getKey();
+                        int value = maxPopulatedCity.getValue();
+                        print(String.format("[%d] = %d", index, value));
+                        break;
+                    }
+                    case 4: {
+                        PrintHelper.print(service.getNumberOfCitiesByRegions(cities));
+                        break;
+                    }
+                    default:
+                        print("Неизвестный код");
                 }
-                default:
-                    print("Неизвестный код");
-            }
-        } while (true);
+            } while (true);
+        }
     }
 }

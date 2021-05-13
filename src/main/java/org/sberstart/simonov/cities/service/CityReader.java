@@ -15,17 +15,15 @@ public class CityReader {
 
     public List<City> readFromFile(File source) {
         List<City> cities = new ArrayList<>();
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(source);
+
+        try (Scanner scanner = new Scanner(source)) {
             while (scanner.hasNextLine()) {
                 cities.add(ParseUtil.parseToCityObject(scanner.nextLine()));
             }
         } catch (FileNotFoundException e) {
             printError(e);
-        } finally {
-            scanner.close();
         }
+
         return cities;
     }
 }
