@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 public class CityService {
 
     public List<City> sortByName(List<City> cities) {
@@ -38,6 +41,6 @@ public class CityService {
 
     public Map<String, Long> getNumberOfCitiesByRegions(List<City> cities) {
         return cities.stream()
-                .collect(Collectors.groupingBy(City::getRegion, Collectors.counting()));
+                .collect(groupingBy(City::getRegion, counting()));
     }
 }
